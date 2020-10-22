@@ -1,0 +1,88 @@
+"DEFINICIONES DE LOS TIPOS DE RAÍZ"
+type Query {
+  "Lista de usuarios registrados en la base de datos (Clientes / Admins)"
+  users: ResultUsers,
+  "Para inicir sesión"
+  login(email: String!, password: String!): ResultLogin
+  
+  "Autenitcarnos por medio del token"
+  me: ResultUser
+}
+
+type Mutation {
+  register(user: UserInput!): ResultUser 
+}
+
+"INTERFACE PARA ESPECIFICAR LAS PROPIEDADES OBLIGATORIAS EN LA RESPUESTA"
+interface Result {
+  "Estado de la Operación"
+  status: Boolean!
+  "Mensaje de la operación para dar feedback"
+  message: String!
+}
+
+type ResultUsers implements Result{
+  "Estado de la Operación"
+  status: Boolean!
+  "Mensaje de la operación para dar feedback"
+  message: String!
+  "Lista de usuarios registrados en la base de datos (Clientes / Admins)"
+  users: [User!]!
+}
+
+type ResultUser implements Result{
+  "Estado de la Operación"
+  status: Boolean!
+  "Mensaje de la operación para dar feedback"
+  message: String!
+  "Información del usuario"
+  user: User
+}
+
+type ResultLogin implements Result{
+  "Estado de la Operación"
+  status: Boolean!
+  "Mensaje de la operación para dar feedback"
+  message: String!
+  "Información del token que se ha loggeado"
+  token: String
+}
+
+"""
+Vamos a espesificar la información detallada del usuario.
+Vamos a tener en cuenta:
+email: usuario del cliente de la abse de datos.
+Fecha de nacimiento y registro en formato ISO.
+
+"""
+
+type User {
+  "Identifciador unico"
+  id: ID!,
+  name: String!,
+  lastname: String!,
+  email: String!,
+  password: String!,
+  registerDate: String!,
+  birthday: String!,
+  role: Role!
+}
+
+"INPUT PARA AÑADIR LOS DATOS DEL USUARIO EN EL REGISTRO"
+
+input UserInput {
+  "ID En ESTE CASO NO OBLIGATORIO"
+  id: ID,
+  name: String!,
+  lastname: String!,
+  email: String!,
+  password: String!,
+  birthday: String!,
+  role: Role=CLIENT
+
+}
+
+enum Role {
+  CLIENT
+  ADMIN
+}

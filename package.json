@@ -1,0 +1,65 @@
+{
+  "name": "backend-meang",
+  "version": "0.0.1",
+  "description": "Proyecto backend api grapQL tienda online - MEANG + G",
+  "main": "build/server.js",
+  "scripts": {
+    "start": "node build/server.js",
+    "build": "tsc -p .",
+    "dev": "nodemon \"src/server.ts\" --exec \"ts-node\" \"src/server.ts\" -e ts,graphql,json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElAlgoritmoDeLaNoche/backend-meang-online-tienda.git"
+  },
+  "keywords": [
+    "grapQL",
+    "meang",
+    "api-graphQL",
+    "stripe",
+    "cloudinary",
+    "netlify",
+    "zeitnow"
+  ],
+  "author": "Francisco Navarrete",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ElAlgoritmoDeLaNoche/backend-meang-online-tienda/issues"
+  },
+  "homepage": "https://github.com/ElAlgoritmoDeLaNoche/backend-meang-online-tienda#readme",
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0"
+  },
+  "dependencies": {
+    "@types/jsonwebtoken": "^8.5.0",
+    "apollo-server-express": "^2.18.2",
+    "bcrypt": "^5.0.0",
+    "chalk": "^4.1.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^15.3.0",
+    "graphql-import-node": "0.0.4",
+    "graphql-playground-middleware-express": "^1.7.21",
+    "graphql-tools": "^6.2.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.2",
+    "ncp": "^2.0.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/compression": "^1.7.0",
+    "@types/cors": "^2.8.8",
+    "@types/express": "^4.17.8",
+    "@types/graphql": "^14.5.0",
+    "@types/mongodb": "^3.5.28",
+    "@types/node": "^14.11.10",
+    "nodemon": "^2.0.5",
+    "ts-node": "^9.0.0",
+    "typescript-tslint-plugin": "^0.5.5"
+  }
+}
