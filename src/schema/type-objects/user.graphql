@@ -1,0 +1,18 @@
+"""
+Vamos a espesificar la información detallada del usuario.
+Vamos a tener en cuenta:
+email: usuario del cliente de la abse de datos.
+Fecha de nacimiento y registro en formato ISO.
+
+"""
+type User {
+  "Identifciador unico"
+  id: ID!,
+  name: String!,
+  lastname: String!,
+  email: String!,
+  password: String!,
+  registerDate: String!,
+  birthday: String!,
+  role: Role!
+}

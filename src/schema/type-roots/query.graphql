@@ -1,0 +1,12 @@
+"DEFINICIONES DE LOS TIPOS DE RAÍZ"
+type Query {
+  "Lista de usuarios registrados en la base de datos (Clientes / Admins)"
+  users: ResultUsers,
+  "Para inicir sesión"
+  login(email: String!, password: String!): ResultLogin
+  
+  "Autenitcarnos por medio del token"
+  me: ResultUser
+  "Mostrar lista de productos"
+  products: Boolean
+}
