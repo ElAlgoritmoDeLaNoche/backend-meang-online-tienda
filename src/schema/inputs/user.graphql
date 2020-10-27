@@ -3,11 +3,17 @@
 input UserInput {
   "ID En ESTE CASO NO OBLIGATORIO"
   id: ID,
+  "Nombre"
   name: String!,
+  "Apellido"
   lastname: String!,
+  "Correo electronico"
   email: String!,
-  password: String!,
+  "Password asociado a la cuenta"
+  password: String,
+  "Fecha de nacimiento - Solo mayores de 18 años"
   birthday: String!,
+  "Permisos del usuaario"
   role: Role=CLIENT
 
 }

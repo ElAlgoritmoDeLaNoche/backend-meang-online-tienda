@@ -7,6 +7,8 @@ type Query {
   
   "Autenitcarnos por medio del token"
   me: ResultUser
-  "Mostrar lista de productos"
-  products: Boolean
+  "Lista de géneros"
+  genres: ResultGenre
+  "Item del género seleccionado"
+  genre(id: ID!): ResultGenre
 }

@@ -20,9 +20,9 @@ export const asignDocumentId = async(
   .toArray();
 
   if(lastElement.length === 0){
-    return 1;
+    return '1';
   }
-  return lastElement[0].id + 1;
+  return String (+lastElement[0].id + 1);
 };
 
 export const findOneElement = async(
@@ -31,7 +31,7 @@ export const findOneElement = async(
   filter: object
 ) => {
   return database.collection(collection).findOne(filter);
-}
+};
 
 export const insertOneElement = async(
   database: Db,
@@ -39,6 +39,26 @@ export const insertOneElement = async(
   document: object
 ) => {
   return await database.collection(collection).insertOne(document);
+};
+
+export const updateOneElement = async(
+  database: Db,
+  collection: string,
+  filter: object,
+  updateObject: object
+) => {
+  return await database.collection(collection).updateOne(
+    filter,
+    { $set: updateObject }
+  );
+};
+
+export const deleteOneElement = async(
+  database: Db,
+  collection: string,
+  filter: object = {}
+) => {
+  return await database.collection(collection).deleteOne(filter);
 };
 
 export const insertManyElements = async(
