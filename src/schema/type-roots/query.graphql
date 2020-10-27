@@ -1,14 +1,14 @@
 "DEFINICIONES DE LOS TIPOS DE RAÍZ"
 type Query {
   "Lista de usuarios registrados en la base de datos (Clientes / Admins)"
-  users: ResultUsers,
+  users (page: Int = 1, itemsPage: Int = 20): ResultUsers,
   "Para inicir sesión"
   login(email: String!, password: String!): ResultLogin
   
   "Autenitcarnos por medio del token"
   me: ResultUser
   "Lista de géneros"
-  genres: ResultGenre
+  genres (page: Int = 1, itemsPage: Int = 20): ResultGenre
   "Item del género seleccionado"
   genre(id: ID!): ResultGenre
 }

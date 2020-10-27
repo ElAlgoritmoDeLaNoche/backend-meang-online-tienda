@@ -3,6 +3,7 @@ import { IVariables } from './../interfaces/variable.interface';
 import { deleteOneElement, findOneElement, insertOneElement, updateOneElement } from './../lib/db.operations';
 import { IContextData } from './../interfaces/context-data.interface';
 import { findElement } from '../lib/db.operations';
+import { pagination } from '../lib/pagination';
 
 class ResolversOperationsService {
   
@@ -27,15 +28,24 @@ class ResolversOperationsService {
   }
 
   // Lista de información 
-  protected async list(collection: string, listElement: string){
+  protected async list(collection: string, listElement: string, page: number = 1, itemsPage: number = 20){
     try{
+ 
+      const paginationData = await pagination(this.getDb(), collection, page, itemsPage);
       return {
+        info: {
+          page: paginationData.page,
+          pages: paginationData.pages,
+          itemsPage: paginationData.itemsPage,
+          total: paginationData.total
+        },
         status: true,
-        message: `Lista de ${ listElement } cargada correctamente`,
-        items: await findElement(this.getDb(), collection)
+        message: `Lista de ${listElement} correctamente cargada`,
+        items: await findElement(this.getDb(), collection, {}, paginationData),
       };
     }catch(error){
       return {
+        info: null,
         status: false,
         message: `Lista de ${ listElement } no cargada ${error}`,
         items: null
